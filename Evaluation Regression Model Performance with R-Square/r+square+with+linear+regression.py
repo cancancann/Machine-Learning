@@ -7,10 +7,7 @@ from sklearn.linear_model import LinearRegression
 df = pd.read_csv("linear_regression_dataset.csv",sep = ";")
 
 # plot data
-plt.scatter(df.deneyim,df.maas)
-plt.xlabel("deneyim")
-plt.ylabel("maas")
-plt.show()
+
 
 # linear regression
 
@@ -26,7 +23,12 @@ linear_reg.fit(x,y)
 
 y_head = linear_reg.predict(x)  # maas
 
+plt.scatter(df.deneyim,df.maas)
 plt.plot(x, y_head,color = "red")
+plt.xlabel("deneyim")
+plt.ylabel("maas")
+plt.show()
+
 
 
 #

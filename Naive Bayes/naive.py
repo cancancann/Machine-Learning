@@ -6,8 +6,6 @@ from sklearn.neighbors import KNeighborsClassifier
 
 data = pd.read_csv("data.csv")
 
-data = pd.read_csv("data.csv")
-data = pd.read_csv("data.csv")
 data.drop(["id","Unnamed: 32"],axis=1,inplace=True)
 data.head()
 

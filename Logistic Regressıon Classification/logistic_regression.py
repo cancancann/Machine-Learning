@@ -1,7 +1,13 @@
+from re import X
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+from scipy.special import logsumexp
+# import warnings
+
+# #suppress warnings
+# warnings.filterwarnings('ignore')
 
 
 #kanser iyi huylu kötü huylu datası 
@@ -55,6 +61,7 @@ def initialize_weights_and_bias(dimension):
 
 def sigmoid(z):
     y_head = 1/(1+np.exp(-z))
+    y_head = np.float16(y_head)
     return y_head
 
 
@@ -63,7 +70,7 @@ def forward_backward_propagation(w,b,x_train,y_train):
     # forward propagation
     z = np.dot(w.T,x_train) + b
     y_head = sigmoid(z)
-    loss = -y_train*np.log(y_head)-(1-y_train)*np.log(1-y_head)
+    loss = logsumexp(y_head)-logsumexp(1-y_head)
     cost = (np.sum(loss))/x_train.shape[1]      # x_train.shape[1]  is for scaling
     # backward propagation
     derivative_weight = (np.dot(x_train,((y_head-y_train).T)))/x_train.shape[1] # x_train.shape[1]  is for scaling

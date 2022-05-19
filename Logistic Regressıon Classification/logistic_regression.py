@@ -6,17 +6,17 @@ from sklearn.model_selection import train_test_split
 
 #kanser iyi huylu kötü huylu datası 
 
-df = pd.read_csv("data.csv",sep=",")
+data = pd.read_csv("data.csv",sep=",")
 # print(df.head())
 # print(df.info())
-df = df.drop(["Unnamed: 32","id"],axis=1)
+data = data.drop(["Unnamed: 32","id"],axis=1)
 # print(df)
 
-df.diagnosis = [1 if each == "M" else 0 for each in df.diagnosis]
+data.diagnosis = [1 if each == "M" else 0 for each in data.diagnosis]
 # print(df.diagnosis)
 
-y = df.diagnosis.values
-x_data = df.drop(["diagnosis"],axis=1) ##train
+y = data.diagnosis.values
+x_data = data.drop(["diagnosis"],axis=1) ##train
 # print(x_data)
 
 ##normalization
